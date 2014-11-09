@@ -37,6 +37,7 @@ var Photo = new mongoose.Schema({
     image: Buffer,
     image_type: String,
     text: String,
+    tripName: 
     latitude: String,
     longitude: String
 });
@@ -56,6 +57,21 @@ app.get('/api/v1/User/:tripName', function (request, response) {
     });
    
 });
+
+//Other endpoints needed: 
+//We need to post an image for a user. The request will look like:
+/*
+    {
+        tripName : ______ ,
+        //Then all the stuff needed for the photo schema. 
+    }
+*/
+//We can pull the first element of the request, which will give us the trip name. 
+//We check if the trip name already exists, and if not, we create it, and then put the photo under it in the db. Else we just put the photo under the existing collection. 
+
+//We need a GET trip names. (should be easy)
+//We need to do Facebook authentication for the "User". 
+
 
 // app.post('/api/v1/posts', function (request, response) {
 //     var post = new postModel({
