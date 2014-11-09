@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>breadcrmb</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Lato:300|Economica:400,700' rel='stylesheet' type='text/css'>
+	<script>
+		var rows = Math.floor($(window).height() / 100 /*height of image*/ );
+		var columns = Math.floor($(window).width() / 160 /*width of an image*/ );
+		var divsToMake = rows * columns;	/*# of images necessary to create a grid*/
+		var appendStr;
+		var imgs = ["http://upload.wikimedia.org/wikipedia/commons/7/79/Japanese_Tea_Garden,_San_Francisco.jpg",
+		"http://upload.wikimedia.org/wikipedia/commons/a/ae/Castle_Neuschwanstein.jpg",
+		"http://upload.wikimedia.org/wikipedia/commons/b/b4/Buckingham_Palace,_London_-_April_2009.jpg",
+		"http://upload.wikimedia.org/wikipedia/commons/5/53/Colosseum_in_Rome,_Italy_-_April_2007.jpg",
+		"http://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/The_Great_Wall_of_China_at_Jinshanling.jpg/2560px-The_Great_Wall_of_China_at_Jinshanling.jpg",
+		"http://upload.wikimedia.org/wikipedia/commons/c/c8/Taj_Mahal_in_March_2004.jpg",
+		"http://upload.wikimedia.org/wikipedia/commons/8/86/Bostonstraight.jpg",
+		"http://upload.wikimedia.org/wikipedia/commons/b/b6/Santa_Monica_Pier_2011.jpg",
+		"http://upload.wikimedia.org/wikipedia/commons/a/a6/Brandenburger_Tor_abends.jpg",
+		"http://upload.wikimedia.org/wikipedia/commons/7/7c/Sydney_Opera_House_-_Dec_2008.jpg"
+		];
+		$(document).ready(function(){
+		for(var i = 0; i < divsToMake; i++)
+		{
+			var idStr = "img" + i;
+			var classStr = "tile";
+			var appendStr = "<div id=\"" + idStr + "\" class=\"" + classStr +"\">";
+			$("#background").append(appendStr);
+			$("#" + idStr).append("<img src=\"" + imgs[i % 10] + "\"/>");
+		}
+	})
+	</script>
+	<style>
+		html
+		{
+			background-color:rgba(0,0,0,0.8);
+			font-family: 'Lato', sans-serif;
+		}
+		h1
+		{
+			margin-top:0;
+			font-family: 'Economica', sans-serif;
+		}
+		html, body
+		{
+			margin:0px;
+		}
+		html, #background
+		{
+			width:90%;
+			margin:0 auto;
+		}
+		#background
+		{
+			position:absolute;
+			left:0;
+			right:0;
+			top:0;
+			font-size: 0;		/*necessary for the spacing between divs/inline elements to be 0*/
+			z-index:-1;
+		}
+		.tile
+		{
+			display:inline;
+			margin:-10px -2px;
+		}
+		.tile img
+		{
+			height:100px;
+			width:160px;
+		}
+		#form
+		{
+			position:relative;
+			background-color:rgba(0,0,0,0.6);
+			color:white;
+			height:60%;
+			width:50%;
+			padding:5%;
+			margin:10% auto;
+		}
+		#footer
+		{
+			font: 16px'Economica', sans-serif;
+			z-index:1;
+			text-align:left;
+			margin: 2% 0;
+			padding:1% 0 4% 0;
+			border-top: 1px solid rgb(255, 255, 255);
+			color:rgb(255, 255, 255);
+		}
+		#fbloginbutton
+		{
+			position:relative;
+			width:25%;
+			margin: 5% auto 0 auto;
+			padding:1% 5%;
+			background-color:rgb(59,89,152);
+		}
+		#fbloginbutton h5
+		{
+			position:absolute;
+			top:12px;
+			display:inline-block;
+			margin:0 10px;
+			display:inline;
+		}
+		#fbloginbutton img
+		{
+			display:inline-block;
+			margin-left:-20px;
+			margin-right: 10px;
+			height:40px;
+		}
+		#form a
+		{
+			color:rgb(255,255,255);
+			text-decoration:none;
+		}
+	</style>
+</head>
+<body>
+	<div id="background">
+	</div>
+	<div id="form">
+		<h1>breadcrmb</h1>
+		This webapp works in conjunction with our iPhone app to allow users to easily create a travel diary, which they can share with their friends and family. Users can enter images and journal entries through the mobile app, and the website provides a better journal viewing experience. All you need to do is connect to Facebook.
+		<a href="#"><div id="fbloginbutton"><img src="http://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_(square).png"><h5>Sign in with Facebook</h5></div></a>
+	</div>
+</body>
+</html>	
