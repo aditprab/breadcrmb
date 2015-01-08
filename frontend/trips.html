@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>breadcrmb | trips</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Lato:300|Economica:400,700' rel='stylesheet' type='text/css'>
+	<style>
+		html, body
+		{
+			height:100%;
+			width:100%;
+			font-family: 'Lato', sans-serif;
+		}
+		h1
+		{
+			font-family: 'Economica', sans-serif;
+		}
+		#container
+		{
+			width:620px;
+			height:90%;
+			margin:0 auto;
+			text-align:center;
+		}
+		.trip, .trip img
+		{
+			width:300px;	/*preserves the aspect ratio of images taken on iPhones*/
+			height:200px;
+		}
+		.trip
+		{
+			position:relative;
+			display:inline-block;
+			margin:20px;
+	/*			border: 1px solid rgba(0,0,0,1.0);
+*/		}
+		.tripHover
+		{
+			position:absolute;
+			left:0;
+			bottom:0px;
+			width:225px;
+			height:225px;
+			background-color:rgba(0,0,0,0.5);
+			color:rgb(255, 255, 255);
+			border-radius: 150px;
+			-webkit-border-radius: 150px;
+			-moz-border-radius: 150px;
+		}
+		.trip .text
+		{
+			padding-top:100px;
+			text-align: center;
+			width:225px;
+			color:rgb(255, 255, 255);
+		}
+	</style>
+	<script>
+		var imgs = ["http://upload.wikimedia.org/wikipedia/commons/9/98/San_Francisco_Cable_Car_MC.jpg",
+		"http://upload.wikimedia.org/wikipedia/commons/9/93/Ireland_Dublin_Night.JPG",
+		"http://upload.wikimedia.org/wikipedia/commons/0/07/Boston_downtown_skyline.jpg",
+		"https://c1.staticflickr.com/1/87/224081487_36f824943e_z.jpg?zz=1"
+		]
+		$(document).ready(function(){
+			// var count/*number of trips*/ = 4;
+			var places = ["San Francisco", "Dublin" , "Boston", "Dubai"];
+			var count = places.length;
+			for(var i = 0; i < count; i++)
+			{
+				var idStr = "trip" + i;
+				var classStr = "trip";
+				var appendStr = "<div id=\"" + idStr + "\" class=\"" + classStr +"\"</div>";
+				$("#container").append(appendStr);
+				// $("#" + idStr).append("<img src=\"" + imgs[i] + "\"/>");
+				// var idSelector = "#" + idStr;
+				// ><div class=\"text\">" + places[i] + "</div>
+				var eventHandling = function(sel, img, place){
+					return $(sel).css({"cursor":"pointer",
+						"width":"225px",
+						"height":"225px",
+						"border-radius":"150px",
+						"-webkit-border-radius":"150px",
+						"-moz-border-radius":"150px",
+						"box-shadow":"0 0 8px rgba(0, 0, 0, .8)",
+						"-webkit-box-shadow":"0 0 8px rgba(0, 0, 0, .8)",
+						"-moz-box-shadow":"0 0 8px rgba(0, 0, 0, .8)",
+						"background":"url(" + img + ") no-repeat",
+						"background-size":"300px 225px"
+						})
+						.hover(function(){
+							var divHtml = "<div class=\"tripHover\"><div class=\"text\">" +  place + "</div></div>"
+							$(sel).append(divHtml);
+						}, function(){
+							$(sel).empty();
+						})
+						.click(function(){
+
+						});
+				};
+				$("#" + idStr).hover(eventHandling("#" + idStr, imgs[i], places[i]));
+			}
+		})
+	</script>
+</head>
+<body>
+	<div id="container">
+		<h1>Trips I've Taken</h1>
+	</div>
+</body>
+</html>
