@@ -1,0 +1,42 @@
+
+
+#map_wrapper {
+	height:440px;
+}
+
+#map_canvas {
+	width: 97%;
+	height: 100%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+img {
+	height: 300px;
+	width: 400px;
+}
+
+
+.trip {
+	float: left;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-right: 10px;
+	display: none;
+}
+
+#title{
+	font-size: 32pt;
+	text-align: center;
+	
+	font-family: Helvetica Neue;
+	color: white;
+}
+
+header {
+	width: 97%;
+	background-color: #069CC6;
+	margin-right: auto;
+	margin-left: auto;
+}
